@@ -1,0 +1,75 @@
+@import "compass/css3"
+
+@import "compass/layout"
+
+$divs: 60
+$diameter: 60px
+$overlap-factor: 2.4  // lower = more overlap
+$side: 24px
+$columns: 20
+$rows: $divs / $columns
+$fade: 4s
+
+$yellow: #f1c40f
+
+html
+  padding: 24px 36px
+  background: #111
+
+label, input
+  cursor: pointer
+  float: right
+  
+label
+  margin-left: 12px
+  font: bold italic 16px sans-serif
+  color: #333
+
+#vcent
+  +stretch(0)
+  height: $diameter * (1 + ($overlap-factor - 1) * $rows) / $overlap-factor
+  width: $diameter * (1 + ($overlap-factor - 1) * $columns) / $overlap-factor
+  margin: auto
+  font-size: 0
+  
+  div
+    $margin-overlap: -$diameter / $overlap-factor
+      
+    box-sizing: border-box
+    position: relative
+    display: inline-block
+    height: $diameter
+    width: $diameter
+    margin: 0 $margin-overlap $margin-overlap 0
+    +border-radius($diameter / 2)
+    
+    &:after
+      $pos: ($diameter - $side - 2) / 2 // -2px for border
+        
+      content: ''
+      position: absolute
+      top: $pos
+      left: $pos
+      height: $side
+      width: $side
+      background: black
+      +transition(background $fade, z-index 0 1s)
+        
+    &:hover
+      pointer-events: none
+      z-index: -1 // backup incase pointer-events doesn't work
+      
+      &:after
+        background: $yellow
+        +transition(background 0, z-index 0)
+        
+\:checked + #vcent div
+  border: 1px solid $yellow
+  +transition(background $fade)
+  
+  &:after
+    display: none
+  
+  &:hover
+    background-color: $yellow
+    +transition(background 0)
