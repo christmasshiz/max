@@ -1,0 +1,92 @@
+html {
+  padding: 24px 36px;
+  background: #ecf0f1;
+  font-family: "Press Start 2p";
+  color: #0cff00;
+  text-align: center;
+}
+
+label, input {
+  cursor: pointer;
+  float: right;
+}
+
+label {
+  margin-left: 12px;
+  font: bold italic 16px sans-serif;
+  color: white;
+}
+
+h1 {
+font-size: 45px;
+margin-top: 210px;
+}
+
+#vcent {
+  position: absolute;
+  top: -780px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 130.0px;
+  width: 725px;
+  margin: auto;
+  font-size: 0;
+  text-align: center;
+}
+#vcent div {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  margin: 0 -25px -25px 0;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+}
+#vcent div:after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  height: 24px;
+  width: 24px;
+  background: white;
+  -webkit-transition: background 4s, z-index 0;
+  -webkit-transition-delay: 0s, 1s;
+  -moz-transition: background 4s, z-index 0 1s;
+  -o-transition: background 4s, z-index 0 1s;
+  transition: background 4s, z-index 0 1s;
+}
+#vcent div:hover {
+  pointer-events: none;
+  z-index: -1;
+}
+#vcent div:hover:after {
+  background: #0cff00;
+  -webkit-transition: background 0, z-index 0;
+  -moz-transition: background 0, z-index 0;
+  -o-transition: background 0, z-index 0;
+  transition: background 0, z-index 0;
+}
+
+:checked + #vcent div {
+  border: 1px solid #9b59b6;
+  -webkit-transition: background 4s;
+  -moz-transition: background 4s;
+  -o-transition: background 4s;
+  transition: background 4s;
+}
+:checked + #vcent div:after {
+  display: none;
+}
+:checked + #vcent div:hover {
+  background-color: #9b59b6;
+  -webkit-transition: background 0;
+  -moz-transition: background 0;
+  -o-transition: background 0;
+  transition: background 0;
+}
